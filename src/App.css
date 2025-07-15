@@ -1,0 +1,26 @@
+*{
+    font-family:Verdana, Tahoma, sans-serif;
+}
+.pink__gradient {
+  background: linear-gradient(90deg, #cc13ff 0%, #6e0096 100%);
+  filter: blur(900px);
+
+}
+
+.purpleGrad{
+    background:linear-gradient(90deg, #a800d7 0%, #5f0082 100%);
+    cursor: pointer;
+}
+.purpleGradText{
+
+    background:linear-gradient(90deg, #a800d7 0%, #5f0082 100%);
+    background-clip:text ;
+    -webkit-background-clip:text ;
+    -webkit-text-fill-color: transparent;
+}
+
+.purpleGrad:hover{
+    background: linear-gradient(90deg, #a800d7 0%, #5f0082 100%);
+
+    transition: all;
+}
