@@ -16,7 +16,6 @@ function Home() {
     const handleNewquiz = (result: boolean) => {
       setStarted(result)
     }
-    // console.log(started);
     
     const handleStart = () => {
       if (category && questNum && difficulity && choicesNum){

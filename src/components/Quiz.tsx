@@ -43,31 +43,30 @@ const Quiz = ({catego ,qnum,diff,cnum,start,newQuiz}: QuizProps) => {
   useEffect(() => {
     
       if (quiz === "Ended"){
-        let quizzesTaken = parseInt(localStorage.getItem("quizzesTaken"))
-        let totalGrades = parseInt(localStorage.getItem("totalGrades"))
-        let prevGrade = parseInt(localStorage.getItem("lastQuizPercentage"))
+        let quizzesTaken = parseInt(localStorage.getItem("quizzesTaken") ?? "0") || 0
+        let totalGrades = parseInt(localStorage.getItem("totalGrades")  ?? "0") || 0
+        let prevGrade = parseInt(localStorage.getItem("lastQuizPercentage")  ?? "0") || 0
         
         if (newPercentage >= prevGrade){
           localStorage.setItem("highestGrade",newPercentage.toString())
         }
-        // let lastQuizPercentage = parseInt(localStorage.getItem("lastQuizPercentage"))
+
         const currentDate = new Date();
-        // let getScore = localStorage.getItem("scoreArr")
-        // let scoreArr = JSON.parse(getScore)
+
         let newScore = quizzesTaken+1
         let newTotalGrades = totalGrades + grade
-        localStorage.setItem("quizzesTaken",newScore.toString())
+        localStorage.setItem("quizzesTaken",newScore.toString() || "0")
         localStorage.setItem("totalGrades",newTotalGrades.toString())
         localStorage.setItem("lastQuizPercentage",`${newPercentage}`)
         localStorage.setItem("lastQuizDate",`${currentDate.getDate()}-${currentDate.getMonth()+1}-${currentDate.getFullYear()}`)
         localStorage.setItem("lastQuizCnum",cnum.toString())
 
-        // localStorage.setItem("ScoreArr",JSON.stringify([...scoreArr, newScore]))
+
       }
   },[quiz])
   
   useEffect(() => {
-      // const storedCount = localStorage.getItem("quizzesTaken")
+  
 
       
       const url =`https://opentdb.com/api.php?amount=${qnum}&category=${catego}&difficulty=${diff}&type=multiple`
@@ -93,11 +92,11 @@ const Quiz = ({catego ,qnum,diff,cnum,start,newQuiz}: QuizProps) => {
       }
       choiceArr.splice(Math.floor(Math.random() * cnum), 0, he.decode(questionsObj.results[curr].correct_answer))
       setChoices(choiceArr)
-      console.log(cnum)
+  
     }}
 
   const handleReady = () => {
-    console.log(qnum, diff, cnum, catego);
+
     
     if(cnum && qnum && catego && diff){
       if (start){
@@ -109,10 +108,7 @@ const Quiz = ({catego ,qnum,diff,cnum,start,newQuiz}: QuizProps) => {
       }
       choiceArr.splice(Math.floor(Math.random() * 10), 0, he.decode(questionsObj.results[curr].correct_answer))
       setChoices(choiceArr)
-      // console.log(choiceArr)
 
-      console.log(quizNumState)
-      console.log(typeof quizNumState)
       setCurr(c => c+1)
     }else{
       setQuiz("Error")

@@ -6,7 +6,7 @@ import { CalendarDays, Trophy, ListTodo, Flame } from "lucide-react"
 
 const Dashboard = () => {
   const stats = {
-    totalQuizzes: localStorage.getItem("quizzesTaken"),
+    totalQuizzes: localStorage.getItem("quizzesTaken") ,
     totalGrades: localStorage.getItem("totalGrades"),
     newPercentage: localStorage.getItem("lastQuizPercentage"),
     lastQuiz: localStorage.getItem("lastQuizDate"),
@@ -25,7 +25,7 @@ const Dashboard = () => {
             <ListTodo className="text-primary w-8 h-8" />
             <div>
               <h2 className="text-sm text-muted-foreground">Quizzes Taken</h2>
-              <p className="text-xl font-semibold">{stats.totalQuizzes}</p>
+              <p className="text-xl font-semibold">{stats.totalQuizzes || "0"}</p>
             </div>
           </CardContent>
         </Card>
@@ -35,7 +35,7 @@ const Dashboard = () => {
             <Flame className="text-primary w-8 h-8" />
             <div>
               <h2 className="text-sm text-muted-foreground">Total Grades</h2>
-              <p className="text-xl font-semibold">{stats.totalGrades}</p>
+              <p className="text-xl font-semibold">{stats.totalGrades || "0"}</p>
             </div>
           </CardContent>
         </Card>
@@ -45,7 +45,7 @@ const Dashboard = () => {
             <Trophy className="text-primary w-8 h-8" />
             <div>
               <h2 className="text-sm text-muted-foreground">Highest Grade</h2>
-              <p className="text-xl font-semibold">{stats.highestGrade}%</p>
+              <p className="text-xl font-semibold">{stats.highestGrade || "0"}%</p>
             </div>
           </CardContent>
         </Card>
@@ -55,7 +55,7 @@ const Dashboard = () => {
             <CalendarDays className="text-primary w-8 h-8" />
             <div>
               <h2 className="text-sm text-muted-foreground">Last Quiz</h2>
-              <p className="text-xl font-semibold">{stats.lastQuiz}</p>
+              <p className="text-xl font-semibold">{stats.lastQuiz || "no quizzes attempted yet"}</p>
             </div>
           </CardContent>
         </Card>

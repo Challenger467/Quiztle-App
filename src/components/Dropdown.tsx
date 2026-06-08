@@ -16,11 +16,7 @@ type DropdownProps = {
 
 const Dropdown = ({setter, visible, title, options} : DropdownProps) => {
   const [selectedValue, setSelectedValue] = useState("")
-  // const selectRef = useRef<any>(null)
-  // const handleChange = () => {
-  //   setter(selectRef.current.value)
-  
-  // }
+
 
   useEffect(() => {
     setter(selectedValue)
@@ -28,9 +24,7 @@ const Dropdown = ({setter, visible, title, options} : DropdownProps) => {
   return (
     <div className={`my-3 ml-10 ${visible}`}>
       <p className=" text-white py-2 text-xl mb-2">{title}</p>
-      {/* <select ref={selectRef} onChange={handleChange} className="text-white w-3xs h-xl border p-3 border-white rounded-full hover:bg-">
-        {options.map((opt,i) => 
-        <option key={i} className="bg-neutral-900 text-white border border-white rounded-full p-2 hover:bg-neutral-900" value={opt.id}>{opt.name}</option>)} */}
+
             <Select  onValueChange={setSelectedValue}>
               <SelectTrigger className="w-[220px] text-white">
                 <SelectValue placeholder="Select..." />
@@ -41,7 +35,6 @@ const Dropdown = ({setter, visible, title, options} : DropdownProps) => {
               </SelectContent>
             </Select>
 
-      {/* </select> */}
     </div>
   )
 }

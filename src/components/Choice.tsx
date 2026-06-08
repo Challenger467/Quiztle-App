@@ -10,7 +10,6 @@ const Choice = ({value,checked,current}: ChoiceProps) => {
 
   useEffect(() => {
     checked(selectedValue)
-    console.log(selectedValue);  
   },[selectedValue])
 
   return (
